@@ -83,28 +83,70 @@ void versiontexte(){
     printf("\n");
 }
 
-void site(){
+// Function to print connection statistics to the console
+void print_stats() {
+    int mois_connections[12] = {0,0,0,0,0,0,0,0,0,0,0,0};
+    float totcon = 0.0;
+    float taux;
+    char start_date[16] = "";
+
+    // Read the start date from the log file
+    startdate(start_date);
+
+    // Read the number of connections per month from the log file
+    loglecture(mois_connections);
+
+    // Calculate the total number of connections
+    for(int i = 0; i < 12; i++){
+        totcon += mois_connections[i];
+    }
+
+    // Print the total number of connections
+    printf("Depuis le %s on a enregistre %.0f connexions.\n", start_date, totcon);
+
+    // Print the percentage of connections for each month
+    for(int i = 0; i < 12; i++){
+        taux = mois_connections[i]*100/totcon;
+        printf("%s : %.1f%%\n", mois[i], taux);
+    }
+    printf("\n");
+}
+
+// Function to generate an HTML page with connection statistics
+void site() {
     int mois_connections[12] = {0,0,0,0,0,0,0,0,0,0,0,0};
     float height;
     float totcon = 0.0;
     float taux;
     int spacetop;
     char start_date[16] = "";
+
+    // Read the start date from the log file
     startdate(start_date);
+
+    // Read the number of connections per month from the log file
     loglecture(mois_connections);
+
+    // Calculate the total number of connections
     for(int i = 0; i < 12; i++){
         totcon += mois_connections[i];
     }
+
+    // Print the HTTP headers and start of the HTML document
     printf("Content-type: text/html\n\n");
     printf("<!DOCTYPE html\n");
     printf("<head>\n<title>Statistiques serveur apache2 en pourcentage </title>\n</head>");
     printf("<body style=\"background-color: #ca3434; color:white;font-family:'Arial', 'sans-serif'\">\n");
     printf("Depuis le %s on a enregistr&eacute; %.0f connexions.<br/>\n", start_date, totcon);
     printf("<div style=\"display:flex;margin-top: 50px;\">\n");
+
+    // Print a bar for each month with the percentage of connections
     for(int i = 0; i < 12; i++){
         taux = mois_connections[i]*100/totcon;
         height = taux*10;
         spacetop = 200-height;
+
+        // Print the bar with the percentage value
         if(height >= 25){
             printf("    <div style=\"margin-left:10px; margin-top:%d; height:%.0fpx; width: 30px; background-color:white; border:1px solid white;text-align: center; padding-top: 5px; position: relative;\">\n", spacetop, (height-5));
             printf("        <div style=\"position: absolute; top: -20px; left: 50%%; transform: translateX(-50%%);\">%.1f</div>\n", taux); 
@@ -115,8 +157,7 @@ void site(){
             printf("    </div>\n");
         }
     }
-    printf("</div>\n");
-    printf("    </html>\n</body>\n\n");   
+    printf("</div>\n</body>\n</html>\n");
 }
 
 int main(int argc, char *argv[]){
@@ -131,4 +172,3 @@ int main(int argc, char *argv[]){
     }
     return EXIT_SUCCESS;
 }
-
