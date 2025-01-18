@@ -19,48 +19,28 @@ Pour cela, utilisez la commande suivante :
 
 sudo systemctl enable apache2
 
-Compilation
+## Installation
 
 Effectuez les commandes suivantes dans le dossier src :
-```js
 
-make
-make install
+```bash
+    make
+    make install
+```
+## Deployment
 
-Utilisation
-
-Modes de lecture
-
-Mode graphique dans le terminal :
-
-./versiondynamique -gr
-
-Mode texte :
-
-./versiondynamique -txt
-
+Mode graphique :
+```bash
+    ./versiondynamique -gr
+```
+Mode texte dans le terminal :
+```bash
+    ./versiondynamique -txt
+```
 Mode web :
-
-Lancez l'application, puis ouvrez votre navigateur à l'adresse suivante :
-
-http://127.0.0.1
-
-'''
-
-Exemples de commande
-
-Lancer le mode graphique :
-'''js
-./versiondynamique -gr
-
-Lancer le mode texte :
-
-./versiondynamique -txt
-
-Lancer l'interface web :
-
-./versiondynamique
-'''
+```bash
+    firefox "http://127.0.0.1" 
+```
 Structure du projet
 
 versiondynamique.c : Fichier principal contenant la logique du programme.
