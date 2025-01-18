@@ -25,12 +25,13 @@ Effectuez les commandes suivantes dans le dossier src :
 
 ```bash
     git clone https://github.com/bob900-cod/log-statistique.git
-    cd log-statistique
+    cd log-statistique-main
     cd src/
     make
     make install
 ```
 ## Deployment
+Toujours dans le dossier src/
 
 Mode graphique :
 ```bash
