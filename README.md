@@ -22,6 +22,7 @@ sudo systemctl enable apache2
 Compilation
 
 Effectuez les commandes suivantes dans le dossier src :
+```js
 
 make
 make install
@@ -44,10 +45,12 @@ Lancez l'application, puis ouvrez votre navigateur à l'adresse suivante :
 
 http://127.0.0.1
 
+'''
+
 Exemples de commande
 
 Lancer le mode graphique :
-
+'''js
 ./versiondynamique -gr
 
 Lancer le mode texte :
@@ -57,7 +60,7 @@ Lancer le mode texte :
 Lancer l'interface web :
 
 ./versiondynamique
-
+'''
 Structure du projet
 
 versiondynamique.c : Fichier principal contenant la logique du programme.
