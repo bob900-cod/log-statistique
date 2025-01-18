@@ -10,7 +10,8 @@ Ce projet est un outil en **C** qui permet de lire les logs d'un serveur Apache 
 - Interface web accessible sur `127.0.0.1` pour une visualisation interactive.
 
 ## ⚠️ : les logs présents ici sont vides. Si vous exécutez le programme, cela effacera les logs déjà présents.
-Pour éviter de les perdre, remplacez le fichier log présent dans log-statistique/www/ par les vôtres.
+Pour éviter de les perdre, remplacez le fichier log présent dans log-statistique/www/.
+Par celui présent dans votre serveur apache /var/log/apache2/access.log.
 
 ## Prérequis
 - Serveur Apache allumé au démarrage. Pour cela, utilisez la commande suivante :
